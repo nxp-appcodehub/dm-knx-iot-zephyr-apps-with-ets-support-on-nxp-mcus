@@ -1,0 +1,58 @@
+manifest:
+  version: "1.2"
+
+  defaults:
+    remote: github
+
+  remotes:
+    - name: github
+      url-base: https://github.com
+
+  projects:
+    # ─────────────────────────────────────────────
+    # Zephyr OS
+    # ─────────────────────────────────────────────
+    - name: zephyr
+      repo-path: zephyrproject-rtos/zephyr
+      revision: v4.4.0
+      import:
+        name-allowlist:
+          # MCU HAL modules
+          - hal            # Generic HAL glue
+          - cmsis          # ARM Cortex-M abstraction layer (Nordic nRF54, NXP)
+          - cmsis_6        # ARM CMSIS 6 (Cortex-M core headers, required for NXP RW612)
+          - hal_nxp        # NXP HAL (NXP i.MX RT, LPC, Kinetis, S32)
+          # Debug and tools
+          - segger         # Segger RTT/SystemView debug support (Nordic nRF54)
+          # Middleware and stacks
+          - hostap         # WPA supplicant (required for NXP Wi-Fi)
+          - mbedtls        # TLS/crypto library (via Zephyr's manifest)
+          - tf-psa-crypto  # PSA Crypto library (via Zephyr's manifest)
+          - mcuboot        # MCUboot secure bootloader
+          - openthread     # OpenThread wireless stack
+
+    # ─────────────────────────────────────────────
+    # Additional custom libraries
+    # ─────────────────────────────────────────────
+
+    # KNX IoT Point API stack (out-of-tree Zephyr module)
+    - name: libknx
+      url: https://gitlab.knx.org/public-projects/knx-iot-point-api/knx-iot-point-api-stack.git
+      revision: zephyr_port
+      path: modules/lib/libknx
+
+    # tinycbor (dependency of libknx)
+    - name: tinycbor
+      url: https://github.com/intel/tinycbor.git
+      revision: 70aba6ba51881e5b8d108c105a17ed9cdee6bc30
+      path: modules/lib/libknx/deps/tinycbor
+
+    # MDNS (dependency of libknx)
+    - name: mdns
+      url: https://github.com/mjansson/mdns.git
+      revision: main
+      path: modules/lib/libknx/deps/mdns
+
+  self:
+    path: app
+

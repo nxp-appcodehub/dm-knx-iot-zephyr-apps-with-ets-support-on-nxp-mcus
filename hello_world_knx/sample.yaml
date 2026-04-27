@@ -1,0 +1,34 @@
+sample:
+  name: hello_world_knx
+  description: >
+    KNX IoT "Hello World" sample demonstrating basic KNX
+    initialization, networking setup and optional OpenThread support.
+  common:
+    min_ram: 32
+    min_flash: 256
+    tags: knx networking introduction
+    depends_on: knx
+
+tests:
+  sample.knx.basic:
+    tags: knx
+    harness: console
+    harness_config:
+      type: one_line
+      regex:
+        - "KNX Hello World! (.*)"
+    platform_allow:
+      - frdm_mcxw72/mcxw727c/cpu0
+      - frdm_rw612
+
+  # Optional OpenThread test build (no runtime, build-only)
+  sample.knx.openthread.build:
+    build_only: true
+    extra_args:
+      - CONFIG_NXP_MONOLITHIC_NBU=n
+      - OVERLAY_CONFIG=overlay-ot.conf
+    platform_allow:
+      - frdm_rw612
+      - frdm_mcxw72/mcxw727c/cpu0
+    tags: knx openthread
+

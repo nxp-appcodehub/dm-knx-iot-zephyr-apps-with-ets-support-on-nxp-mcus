@@ -1,0 +1,29 @@
+/*
+ * Copyright (c) 2026 Alexander Burker
+ * Copyright 2026 NXP
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+
+/ {
+    aliases {
+        button0 = &user_button_0;
+    };
+};
+
+/* Add a label so the longpress node can reference the gpio_keys parent. */
+buttons: &{/gpio_keys} {};
+
+/ {
+    longpress: longpress {
+        compatible = "zephyr,input-longpress";
+        input = <&buttons>;
+        input-codes = <INPUT_KEY_0>;
+        short-codes = <INPUT_KEY_A>;
+        long-codes = <INPUT_KEY_F1>;
+
+        long-delay-ms = <1000>; // Duration for long press
+    };
+};

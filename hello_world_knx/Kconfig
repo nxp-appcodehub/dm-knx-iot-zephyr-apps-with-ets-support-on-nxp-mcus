@@ -1,0 +1,19 @@
+#
+# SPDX-License-Identifier: Apache-2.0
+#
+# Copyright 2026 NXP
+#
+
+mainmenu "KNX-IoT Hello World Application"
+
+# ── Hardware ───────────────────────────────────────────────────────────────────
+
+config KNXIOT_APP_LSXB_CHANNELS
+    int "Number of LSAB channels"
+    default 1
+    range 1 2
+    help
+      Number of independent sensor/actuator channels (1 to 2).
+      Each channel maps to one LED or button.
+
+source "Kconfig.zephyr"

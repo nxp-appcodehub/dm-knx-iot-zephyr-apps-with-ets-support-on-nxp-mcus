@@ -1,0 +1,35 @@
+{
+  "SPDXID": "SPDXRef-DOCUMENT",
+  "spdxVersion": "SPDX-2.3",
+  "creationInfo": {
+    "created": "2026-04-24T12:13:10Z",
+    "creators": [
+      "Organization: NXP"
+    ],
+    "licenseListVersion": "3.26"
+  },
+  "name": "knx_iot_zephyr_port_to_nxp-3",
+  "dataLicense": "CC0-1.0",
+  "documentNamespace": "https://nxp.com/spdx/6e3b074b-babe-43f2-90a2-4540d5517fd7",
+  "packages": [
+    {
+      "SPDXID": "SPDXRef-package-6e3b074b-babe-43f2-90a2-4540d5517fd7",
+      "name": "knx_iot_zephyr_port_to_nxp",
+      "versionInfo": "3",
+      "licenseConcluded": "(Apache-2.0)",
+      "licenseDeclared": "(Apache-2.0)",
+      "downloadLocation": "NOASSERTION",
+      "originator": "Organization: knx_iot_zephyr_port_to_nxp",
+      "supplier": "NOASSERTION",
+      "externalRefs": [],
+      "filesAnalyzed": false
+    }
+  ],
+  "relationships": [
+    {
+      "spdxElementId": "SPDXRef-DOCUMENT",
+      "relationshipType": "DESCRIBES",
+      "relatedSpdxElement": "SPDXRef-package-6e3b074b-babe-43f2-90a2-4540d5517fd7"
+    }
+  ]
+}
